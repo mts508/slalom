@@ -1,0 +1,107 @@
+<html>
+<head>
+	<script>
+		var tricks = [
+			"Fish",
+			"Back Fish",
+			"Snake",
+			"Back Snake",
+			"Cross",
+			"Back Cross",
+			"Nelson",
+			"Back Nelson",
+			"Stroll",
+			"Back Stroll",
+			"Crazy",
+			"Crazy Foward",
+			"Crazy Backward",
+			"Tic Tac",
+			"X",
+			"X Jump",
+			"Small Car",
+			"Back Small Car",
+			"Crab",
+			"One Foot",
+			"One Foot Back",
+			"Mabrouk",
+			"Mexican",
+			"Italian",
+			"Eagle",
+			"Eagle Cross",
+			"Toe Toe Eagle",
+			"Heel Heel Eagle",
+			"Heel Toe Eagle",
+			"Z Eagle",
+			"Brush",
+			"Special",
+			"Heel Toe",
+			"Heel Toe Back",
+			"Sitting Heel Toe",
+			"Sitting Heel Toe Back",
+			"Cobra",
+			"Fan Volt",
+			"J-Turn",
+			"2 Feet Spin",
+			"Foot Gun",
+			"Foot Gun Back",
+			"Toe Wheeling",
+			"Toe Wheeling Back",
+			"Heel Wheeling",
+			"Heel Wheeling Back",
+			"Flat Shift",
+			"Korean",
+			"Reverse J Turn",
+			"Corvo",
+			"Footgun Spin",
+			"Christie",
+			"Christie Back",
+			"Wiper"
+		]
+
+		function getRandomTrick() {
+			return tricks[getRandom(tricks.length)]
+		}
+
+		function getRandom(limit) {
+			return Math.floor(Math.random() * limit);
+		}
+
+		function getCompass() {
+			var text = document.getElementById("text")
+			text.textContent = "";
+
+			for(var i=0; i<document.getElementById("range").value; i++) {
+				text.textContent += (getRandom(3)+1) + " ✕ " + getRandomTrick() + "\n";
+				console.log(i);
+			}
+			
+		}
+
+		window.onload = function() {
+			getCompass();
+			document.getElementById('compassCount').textContent = document.getElementById('range').value
+		}
+	</script>
+	<style>
+		html, body {margin: 0px;padding: 0px;}
+		.container {display: flex;flex-direction: column;height: 100vh;}
+		.content {flex-grow: 1;flex-shrink: 0;padding: 16px; background-color: gainsboro;}
+		.footer {flex-grow: 0;flex-shrink: 0;border-top: 2px solid gray;display: flex;justify-content: space-around;padding: 8px; background-color: gray}
+		#text {
+			white-space: pre-line;
+		}
+	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body">
+	<div class="container">
+		<div class="content">
+			<h2 id="text"></h2>
+		</div>
+		<div class="footer">
+			<button type="button" onclick="getCompass()"><b>↻</b></button>
+			<input id="range" type="range" value="4" min=1; max="10" onchange="document.getElementById('compassCount').textContent = this.value">
+			<span id="compassCount"></span>
+		</div>
+</body>
+</html>
